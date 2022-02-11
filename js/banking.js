@@ -1,25 +1,25 @@
 
-function getInputValue() {
-    const depositInput = document.getElementById('deposit-input');
-    const newDepositText = depositInput.value;
-    const newDepositAmount = parseFloat(newDepositText);
+function getInputValue(inputId) {
+    const inputField = document.getElementById(inputId);
+    const inputAmountText = inputField.value;
+    const amountValue = parseFloat(inputAmountText);
 
     // clear input field
-    depositInput.value = '';
+    inputField.value = '';
 
-    return newDepositAmount;
+    return amountValue;
 }
-
 
 
 // hanle deposit button
 document.getElementById('deposit-btn').addEventListener('click', function () {
-    /* const depositInput = document.getElementById('deposit-input');
+    /* 
+    const depositInput = document.getElementById('deposit-input');
     const newDepositText = depositInput.value;
     const newDepositAmount = parseFloat(newDepositText); */
-    const newDepositAmount = getInputValue();
+    const newDepositAmount = getInputValue('deposit-input');
 
-    // get current deposit 
+    // update deposit 
     const depositTotal = document.getElementById('deposit-total');
     const previousDepositText = depositTotal.innerText;
     const previousDepositAmount = parseFloat(previousDepositText);
@@ -36,26 +36,29 @@ document.getElementById('deposit-btn').addEventListener('click', function () {
 
 });
 
-// hanle withdrow button
-document.getElementById('withdrow-btn').addEventListener('click', function () {
-    const withdrowInput = document.getElementById('withdrow-input');
-    const newWithdrowText = withdrowInput.value;
-    const newWithdrowAmount = parseFloat(newWithdrowText);
+// hanle withdraw button
+document.getElementById('withdraw-btn').addEventListener('click', function () {
+    /* 
+    const withdrawInput = document.getElementById('withdraw-input');
+    const newWithdrawText = withdrawInput.value;
+    const newWithdrawAmount = parseFloat(newWithdrawText); */
 
-    // get current withdrow
-    const withdrowTotal = document.getElementById('withdrow-total');
-    const previousWithdrowText = withdrowTotal.innerText;
-    const previousWithdrowAmount = parseFloat(previousWithdrowText);
+    const newWithdrawAmount = getInputValue('withdraw-input');
 
-    withdrowTotal.innerText = previousWithdrowAmount + newWithdrowAmount;
+    // update withdraw 
+    const withdrawTotal = document.getElementById('withdraw-total');
+    const previousWithdrawText = withdrawTotal.innerText;
+    const previousWithdrawAmount = parseFloat(previousWithdrawText);
+
+    withdrawTotal.innerText = previousWithdrawAmount + newWithdrawAmount;
 
     // update balance
     const balanceTotal = document.getElementById('balance-total');
     const balanceTotalText = balanceTotal.innerText;
     const previousBalanceTotal = parseFloat(balanceTotalText);
 
-    balanceTotal.innerText = previousBalanceTotal - newWithdrowAmount;
-
-    // clear input field
-    withdrowInput.value = '';
+    balanceTotal.innerText = previousBalanceTotal - newWithdrawAmount;
+    /* 
+        // clear input field
+        withdrawInput.value = ''; */
 });
