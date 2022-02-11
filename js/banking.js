@@ -1,8 +1,23 @@
-// hanle deposit button
-document.getElementById('deposit-btn').addEventListener('click', function () {
+
+function getInputValue() {
     const depositInput = document.getElementById('deposit-input');
     const newDepositText = depositInput.value;
     const newDepositAmount = parseFloat(newDepositText);
+
+    // clear input field
+    depositInput.value = '';
+
+    return newDepositAmount;
+}
+
+
+
+// hanle deposit button
+document.getElementById('deposit-btn').addEventListener('click', function () {
+    /* const depositInput = document.getElementById('deposit-input');
+    const newDepositText = depositInput.value;
+    const newDepositAmount = parseFloat(newDepositText); */
+    const newDepositAmount = getInputValue();
 
     // get current deposit 
     const depositTotal = document.getElementById('deposit-total');
@@ -18,8 +33,7 @@ document.getElementById('deposit-btn').addEventListener('click', function () {
 
     balanceTotal.innerText = previousBalanceTotal + newDepositAmount;
 
-    // clear input field
-    depositInput.value = '';
+
 });
 
 // hanle withdrow button
